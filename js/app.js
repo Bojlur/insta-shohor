@@ -73,8 +73,8 @@ const createPost = (post) => {
                 </button>
               </div>
 
-              <div class="post__content">
-                <div class="post__medias">
+              <div class="">
+                <div class="post__media">
                   <img
                     class="post__media"
                     src="${image}"
@@ -121,9 +121,9 @@ const createPost = (post) => {
                   <div class="post__description">
                     <small>
                       <a class="post__name--underline" href="#">
-                          ${post.comments?.user}
+                          ${post.comments[0]?.user}
                       </a>
-                      ${post.comments?.text}
+                      ${post.comments[0]?.text}
                     </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>
@@ -145,6 +145,8 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
     const likedPosts = getLikedPosts();
+    //clear previous like posts
+    document.getElementById("liked").textContent = '';
     likedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "liked" ).appendChild(div);
